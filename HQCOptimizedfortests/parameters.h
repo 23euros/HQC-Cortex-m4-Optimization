@@ -1,5 +1,5 @@
 #define ADD
-//#define MUL
+#define MUL
 
 #ifndef HQC_PARAMETERS_H
 #define HQC_PARAMETERS_H
