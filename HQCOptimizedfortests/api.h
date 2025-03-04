@@ -7,12 +7,27 @@
 
 #include <stdint.h>
 
+#define HQC192 // HQC version, default 128
+#define ADD
+#define MUL
+
+
+#ifdef HQC192
+#define PQCLEAN_HQC128_CLEAN_CRYPTO_ALGNAME                      "HQC-192"
+
+#define PQCLEAN_HQC128_CLEAN_CRYPTO_SECRETKEYBYTES               4586
+#define PQCLEAN_HQC128_CLEAN_CRYPTO_PUBLICKEYBYTES               4522
+#define PQCLEAN_HQC128_CLEAN_CRYPTO_BYTES                        64
+#define PQCLEAN_HQC128_CLEAN_CRYPTO_CIPHERTEXTBYTES              8978
+
+#else
 #define PQCLEAN_HQC128_CLEAN_CRYPTO_ALGNAME                      "HQC-128"
 
 #define PQCLEAN_HQC128_CLEAN_CRYPTO_SECRETKEYBYTES               2305
 #define PQCLEAN_HQC128_CLEAN_CRYPTO_PUBLICKEYBYTES               2249
 #define PQCLEAN_HQC128_CLEAN_CRYPTO_BYTES                        64
 #define PQCLEAN_HQC128_CLEAN_CRYPTO_CIPHERTEXTBYTES              4433
+#endif
 
 // As a technicality, the public key is appended to the secret key in order to respect the NIST API.
 // Without this constraint, PQCLEAN_HQC128_CLEAN_CRYPTO_SECRETKEYBYTES would be defined as 32

@@ -27,11 +27,20 @@
 
 /* Define the Thread parameters */
 #if defined(MUL) && defined(ADD)
+#ifdef HQC192
+#define WORKBUF_SIZE 96000
+#else
 #define WORKBUF_SIZE 50000
+#endif
+
 #elif !defined(MUL) && !defined(ADD)
 #define WORKBUF_SIZE 85000
 #elif defined(MUL)
-#define WORKBUF_SIZE 60000
+#ifdef HQC192
+#define WORKBUF_SIZE 110000
+#else
+#define WORKBUF_SIZE 55000
+#endif
 #else
 #define WORKBUF_SIZE 80000
 #endif
@@ -45,7 +54,7 @@ static THD_WORKING_AREA(waThread1, WORKBUF_SIZE);
 /* Define the thread function */
 static THD_FUNCTION(Thread1, arg) {
     (void)arg;
-    chRegSetThreadName("dilithium2_sign");
+    chRegSetThreadName("HQC");
 
     /* Initialize the parameters for the signature */
     uint8_t ciphertext[CRYPTO_CIPHERTEXTBYTES];

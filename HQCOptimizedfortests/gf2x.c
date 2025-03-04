@@ -17,7 +17,7 @@
  */
 void PQCLEAN_HQC128_CLEAN_vect_mul_low_weight(uint64_t *o, const uint16_t *vlight, const uint64_t *vheavy, uint16_t weight) {
   uint64_t buffer;
-  uint16_t position;
+  uint32_t position;
   uint16_t bigposition;
   uint16_t smallposition;
     for (uint8_t i = 0; i < weight; i ++){
